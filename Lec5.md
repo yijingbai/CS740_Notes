@@ -68,5 +68,9 @@ No.
 ##### Q5) How do you know which decomposition to pick? (Great question)
 Open question. We do not know.
 
+##### Q6) Try not have non-convex function.
+
+###### Q7) Fluid models.
+
 
 

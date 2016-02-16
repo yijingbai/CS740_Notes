@@ -52,4 +52,13 @@ Emulator included a cool tracing capability that presented a number of important
 	- Improvment: Add time stamps to all pkts. They also specify that received ACKs should trigger an evaluation of whether or not to resend based on time out.
 2. Congestion avoidence
 	- based on observation of RTT's which should grow as queues fill before a pkt get lost. => leads to drop in throughput
+	- Measuring throughput depends on measuring BaseRTT(min RTT)
+	- Adjust the window:
+		1. Send window is adjusted up by 1 if $diff < \alpha$
+		2. congestion window is decreased by 1 if $diff > \beta$
+		3. congestion window stays the same if $\alpha < diff < \beta$
+3. Slow down slow start (**Very bad Idea**)
+	- Reno's primary region of loss is on slow start.
+	- Enhancement: double send rate every other RTT. Most packets in the Internet if very small. It will put a very bad effect on the tranmission of small files.
+
 

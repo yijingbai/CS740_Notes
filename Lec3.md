@@ -1,7 +1,7 @@
-#### Lecture 3 TCP/IP
+# Lecture 3 TCP/IP
 
-##Next Paper: JK88
-##Today: TCP/IP
+## Next Paper: JK88
+## Today: TCP/IP
 
 OSI began to think about how to describe network function and functionality in late 70s.
 First layered model in 83
@@ -61,3 +61,5 @@ implemented as queue on sender/receiver
 Careful consideraton of TCP I/O -> there are significant implications for performance in terms of the implementation.
 
 Final Part of the paper discusses the idea of "Connnections" --> Occurs
+
+

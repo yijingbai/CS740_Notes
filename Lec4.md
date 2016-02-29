@@ -1,10 +1,11 @@
-Announcements: Partners for projects
-               Project proposal due in 2 weeks.
+# Announcements: 
+Partners for projects
+Project proposal due in 2 weeks.
 
 Last time: CK74
 Today: JK88
 
-Congestion Avoidance and Control
+# Congestion Avoidance and Control
 
 Motivation: Congestion had become a significant issue -> serous performance degradaton
 

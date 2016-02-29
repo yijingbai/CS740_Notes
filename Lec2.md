@@ -1,4 +1,4 @@
-######Lec2
+# Lec2
 
 architectures enable us to reason about complex systems
 
@@ -28,3 +28,5 @@ Discussion
 	- The buffering is the simple example of QoS
 * What's is primary benefit of an end-to-end implementation.
 	- Reduces processing requirement in the network.
+
+

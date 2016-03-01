@@ -2,6 +2,7 @@
 
 \# |Date | Bib | Title | Type | Reviewed
 ---|-----|-----|-------|------ | -------
+[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design
 [Lec2](#toc_1)|Tuesday 1/26 | [CK74](http://pages.cs.wisc.edu/~pb/740/CK74.pdf) | A protocol for packet network ntercommunication | Internet Architecture adn Design
 [Lec3](#toc_2) | Thursday 1/28 | [JK88](http://ee.lbl.gov/papers/congavoid.pdf) |  Congestion Avoidance and Control | Congestion Control
 [Lec4](#toc_5) | Thursday 2/4 | [C](http://www.princeton.edu/~chiangm/milcom.pdf) | Layering As Optimization Decomposition:  Questions and Answers | Intenet Architecture and design

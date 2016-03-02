@@ -634,5 +634,66 @@ In order to make scheduling decision on each clock cycle $N^2$ queues must be co
 Q: Why do we care about power density?
 A: If we put more power into the chip, it could be hotter and hotter. May be we can cool this, we making the chips with higher and higher power density. But we could not keep cooling them. Reason: 
 
+# Lec11 RSVP
+## Announcement: EXAM#1 this friday
+## Last time: Tiny Terra
+## Today: RSVP
+### Quality of Service
+Base IP service model assures nothing.
+Basic IP servie perfectly for large number of applications. In particular, apps that are "elastic" which means that they tolerate delay, jitter(抖动，颤动) and lost. => implies that we can have many such applications activite at any point in time.
+
+However, there are many apps that are o so tolerant i.e. "inelastic" e.g. media and control application(have real time requirement)
+Consider service models in contextof utility to users v.s. network Bandwidth
+
+At time of RSVP paper, most paper thought media apps would be facilitated ia multicast.
+
+### How can we accommodate inelastic demand?
+ 
+ - application layer buffering
+ - Resouce reservation => only in a single admin domain
+ 
+ Example of capabilities for resource reservations Diffserve Intserve, Queueing mechanisms. MPLS and RSVP like protocols
+
+RSVP Describes protocol for reserving resourceson routers for inelastic applications
+
+Paper begins by describing capabilities that are required of any architecture that support QoS.
+
+1. FlowSpec = A language used to describe traffic which includes i. the characteristic of the flow and ii. the level of quality requried.
+2. A routing protocol that support interaction between devices and requests for QoS
+3. Resource Reservation = ability to set aside resources at all points along a path.
+4. admission control = method for granng or denying reserved resources in order to assure specified QoS.
+5. packet scheduling = method to decide which packet to transmit based on QoS
+
+### Desgin Goals:
+
+1. Support for hetrogenous receivers
+2. Graceful treatment of multicast group membership.
+3. we can treat the multicast address as a channel of the TV.
+4. Allows users to specify app needs so that aggregate resource reservaton accurately reflect demand.
+5. Enable users to easily swtch between data streams such that resource reservations are not over whelmed
+6. Gracefull treatment of trouting changes
+7. keep protocol overhead low.
+8. Keep protocol design independent of the other 4 architectural compoment.
+
+### Design Principles
+
+1. Receiver-initiated reservation
+2. Separating reservation from packet filtering reservations do not determine which packets get access - they only specify the resources themselves. Filters determine which packet get access. but don't affect the reservation.
+3. Provide different reservation styles. This determines how resource requests will be aggregated styles are ether no fitlers, fixed filters or dynamic filters.
+4. maintain "Soft-state" for resource reservations in the routers. This enables protocol to adjust configuratons based on user demand. 
+   - Hard-state: configuraton paramter, the system turn off and turn on, the paramter will be there again.
+   - Soft-state: when a rotuer restart or have changes, the state will be restablished by the protocol
+   Path state is mantain via "Path message" which are transmitted from sources towards clients and include flow spec.
+5. protocol overhead control - care taken in No of messages, message size and did some message merging
+6. modularity - allows for use of different types of admission control flow spec packet filters etc.
+
+## QoS in practice today
+
+- Multiprotocol Label Switching(MPLS) - means for Traffic engineering that enable operators to specify a fixed route four some subset of traffic.
+- QoS extension for OSPF(RFC3220)
+- DiffService widely 
+
+
+
 
 

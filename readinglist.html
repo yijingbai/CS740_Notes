@@ -293,6 +293,14 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 
 <tbody>
 <tr>
+<td><a href="#toc_1">Lec1</a></td>
+<td>Tuesday 1/26</td>
+<td><a href="http://pages.cs.wisc.edu/%7Epb/740/end-to-end.pdf">SRC84</a></td>
+<td>End-To-End Arguments in System Design</td>
+<td>Internet Architecture adn Design</td>
+<td></td>
+</tr>
+<tr>
 <td><a href="#toc_1">Lec2</a></td>
 <td>Tuesday 1/26</td>
 <td><a href="http://pages.cs.wisc.edu/%7Epb/740/CK74.pdf">CK74</a></td>
@@ -1111,6 +1119,83 @@ Design goal is to support 32 * 10Gbps ports</li>
 
 <p>Q: Why do we care about power density?<br/>
 A: If we put more power into the chip, it could be hotter and hotter. May be we can cool this, we making the chips with higher and higher power density. But we could not keep cooling them. Reason: </p>
+
+<h1 id="toc_60">Lec11 RSVP</h1>
+
+<h2 id="toc_61">Announcement: EXAM#1 this friday</h2>
+
+<h2 id="toc_62">Last time: Tiny Terra</h2>
+
+<h2 id="toc_63">Today: RSVP</h2>
+
+<h3 id="toc_64">Quality of Service</h3>
+
+<p>Base IP service model assures nothing.<br/>
+Basic IP servie perfectly for large number of applications. In particular, apps that are <q>elastic</q> which means that they tolerate delay, jitter(抖动，颤动) and lost. =&gt; implies that we can have many such applications activite at any point in time.</p>
+
+<p>However, there are many apps that are o so tolerant i.e. <q>inelastic</q> e.g. media and control application(have real time requirement)<br/>
+Consider service models in contextof utility to users v.s. network Bandwidth</p>
+
+<p>At time of RSVP paper, most paper thought media apps would be facilitated ia multicast.</p>
+
+<h3 id="toc_65">How can we accommodate inelastic demand?</h3>
+
+<ul>
+<li>application layer buffering</li>
+<li><p>Resouce reservation =&gt; only in a single admin domain</p>
+
+<p>Example of capabilities for resource reservations Diffserve Intserve, Queueing mechanisms. MPLS and RSVP like protocols</p></li>
+</ul>
+
+<p>RSVP Describes protocol for reserving resourceson routers for inelastic applications</p>
+
+<p>Paper begins by describing capabilities that are required of any architecture that support QoS.</p>
+
+<ol>
+<li>FlowSpec = A language used to describe traffic which includes i. the characteristic of the flow and ii. the level of quality requried.</li>
+<li>A routing protocol that support interaction between devices and requests for QoS</li>
+<li>Resource Reservation = ability to set aside resources at all points along a path.</li>
+<li>admission control = method for granng or denying reserved resources in order to assure specified QoS.</li>
+<li>packet scheduling = method to decide which packet to transmit based on QoS</li>
+</ol>
+
+<h3 id="toc_66">Desgin Goals:</h3>
+
+<ol>
+<li>Support for hetrogenous receivers</li>
+<li>Graceful treatment of multicast group membership.</li>
+<li>we can treat the multicast address as a channel of the TV.</li>
+<li>Allows users to specify app needs so that aggregate resource reservaton accurately reflect demand.</li>
+<li>Enable users to easily swtch between data streams such that resource reservations are not over whelmed</li>
+<li>Gracefull treatment of trouting changes</li>
+<li>keep protocol overhead low.</li>
+<li>Keep protocol design independent of the other 4 architectural compoment.</li>
+</ol>
+
+<h3 id="toc_67">Design Principles</h3>
+
+<ol>
+<li>Receiver-initiated reservation</li>
+<li>Separating reservation from packet filtering reservations do not determine which packets get access - they only specify the resources themselves. Filters determine which packet get access. but don&rsquo;t affect the reservation.</li>
+<li>Provide different reservation styles. This determines how resource requests will be aggregated styles are ether no fitlers, fixed filters or dynamic filters.</li>
+<li>maintain <q>Soft-state</q> for resource reservations in the routers. This enables protocol to adjust configuratons based on user demand. 
+
+<ul>
+<li>Hard-state: configuraton paramter, the system turn off and turn on, the paramter will be there again.</li>
+<li>Soft-state: when a rotuer restart or have changes, the state will be restablished by the protocol
+Path state is mantain via <q>Path message</q> which are transmitted from sources towards clients and include flow spec.</li>
+</ul></li>
+<li>protocol overhead control - care taken in No of messages, message size and did some message merging</li>
+<li>modularity - allows for use of different types of admission control flow spec packet filters etc.</li>
+</ol>
+
+<h2 id="toc_68">QoS in practice today</h2>
+
+<ul>
+<li>Multiprotocol Label Switching(MPLS) - means for Traffic engineering that enable operators to specify a fixed route four some subset of traffic.</li>
+<li>QoS extension for OSPF(RFC3220)</li>
+<li>DiffService widely </li>
+</ul>
 
 </div></body>
 

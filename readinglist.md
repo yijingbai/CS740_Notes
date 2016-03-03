@@ -695,7 +695,58 @@ Paper begins by describing capabilities that are required of any architecture th
 # Lec12
 ## Announcement: Midterm#1 Tomorrow (CS1325)
 ## Last Time: QoS/RSVP
-## Corre Stateless Fair Queueing
+## Core Stateless Fair Queueing
 DiffServ (RFC2474)
-Protocol for provdng QoS by controlling different traffic types. The main idea is to label traffic using DSCP codes in the IP ToS fields. Based on QoS assigned to a given packet, each router will use a variety of mechanisms delver request/assigned quality.
+Protocol for provdng QoS by controlling different traffic types. The main idea is to label traffic using DSCP codes in the IP ToS fields. Based on QoS assigned to a given packet, each router will use a variety of mechanisms delver request/assigned quality. 
+Mechanism include:
+
+- Classify
+- Mark
+- Shaping - done by managing queues
+- policing - admission control / dropping
+
+## Background
+The Definition of the Core: deep whitin provider network that have large flow of data.
+
+jitter - the time between the consecutive packets, if the time is stable, the jitter is low, if the time is changed, jitter is high.
+
+Congestion control mechanisms work better when router have the capability to allocate the bandwidth fairly.  -> This can be addressed by employing methods to manage queues in routers. The cost is increased complexty(i.e. requirement to maintain per flow state) CSFQ approximates FQ at greatly reduced complexity.
+
+Fair bandwidth allocation: Does TCP guarantee Fairness
+
+Assumptions: 
+
+1. The Fair allocation of bandwidth is important to the congestion control.
+2. The complexity of Fair Bandwidth allocation makes it prohibitive to deploy
+3. FQ says that when demand > C flows are allocated min(f,r) where r =rate and f = proportional rate
+
+CSFQ approximates FQ without maintaning per flow control in the core.
+
+Assumes Edges/Core network config: 
+
+1. core node is complete surrounded by the edge nodes.
+2. Core node do not maintain per flow state
+3. Edge nodes do maintain per flow stat and apply labels to packets that indicate rates.
+
+CSFQ assumes a flow X has a rate $r_x$ it has a fair rate $f_x$ for a given router. if $r_x > f_x$ the next packet for the flow will be dropped(on input) with same probability $p=1-\frac{f_x}{r_x}$ To calculate $f_x$ at a given router, use an iteravive procedure for estimating the aggregate arrival rate A and an aggreagate accept rate F Then calcuate $f_x \approx r for A <= C$ and $fold * \frac{C}{F} for A>C$ For edge nodes, use exponential average to estimate $r_x$(reduces sensitivity to burstiness) - see formula #3
+
+This method can be include weighting such that given flows get proportionally more/less bandwidth
+This paper present a theorem that bounds the amount of extra BW a flow care receive.
+Paper proceeds to evaluate CSFQ vs a variety of AQM methods e.g. FIFO, RED, FlowRED, DRR.
+Edge routers n CSFQ have a complexity $\approx$ FRED which maintains state on a per flow basis.
+Core router have complexity $\approx$ RED. Simulation config = single congested link, 1 UDP flow, 31TCP Flows, latency(1ms)
+
+Result
+1. CSFQ performs very close to DRR in terms of fair Bandwidth allocation and Throughput.
+2. Consider multiple congested links and a single TCP flow in the face of a large amount of UDP traffic. Result: For UDP source CSFQ $\approx$ FRED and for TCP source CSFQ does much better than all other mechanisms except DRR.
+3. condiders performance of CSFQ when other schemes are used at the same time.
+4. Instances have on-off souce along wth 19 TCP sources and a single bottleneck.
+Result: CSFQ is much better than FIFO or RED but worse than FRED.
+
+Internet arch / TCP / Measurement / Router Design / QoS
+
+Two question on each area
+10 questons
+
+1 hour 15 mins
 

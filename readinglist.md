@@ -364,8 +364,7 @@ LTWW94
 Path constancy
 
 ## Notes on measurement
-2 base methods :
-1) 
+1) Passive. E.g. packet capture(through flow export e.g. netflow, SNMP security). Using special hardware like packet filter, also high speed packet need more precise timestamp. Senior provider turn on flow export, they want to see how their network behavies.2)Active Measurement: send packet or stream of packets into the network to measure response. Trace router: to get the path between the source and destiment.Strengths of passive measurement: 1. Not introduce extra packets. 2. Get real detail of packets 3.ability to capture the same packets to reproduce same phonoma. Weakness of passive measurement: 1. Hard to do in the general context 2. Need to get permission to the network 3. Need to filter the data and preprocess the flow to store the flow.Strengths of active measurement: 1.get what you want to get. 2.easy to do in the general contextWeakness of active measurement: 1. The data is less, may need extra information 
 
 # Lec8
 ## Announcement Midterm #1 date TBD today
@@ -693,7 +692,10 @@ Paper begins by describing capabilities that are required of any architecture th
 - QoS extension for OSPF(RFC3220)
 - DiffService widely 
 
-
-
-
+# Lec12
+## Announcement: Midterm#1 Tomorrow (CS1325)
+## Last Time: QoS/RSVP
+## Corre Stateless Fair Queueing
+DiffServ (RFC2474)
+Protocol for provdng QoS by controlling different traffic types. The main idea is to label traffic using DSCP codes in the IP ToS fields. Based on QoS assigned to a given packet, each router will use a variety of mechanisms delver request/assigned quality.
 

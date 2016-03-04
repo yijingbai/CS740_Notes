@@ -12,8 +12,8 @@
 [Lec8](#toc_33) | Thursday 2/18 | [WB13](http://conferences.sigcomm.org/sigcomm/2013/papers/sigcomm/p123.pdf) | Winstein & Balakrishnan, "TCP ex Machina:  Computer-Generated Congestion Control" | Congestion Control
 [Lec9](#toc_41) | Tuesday 2/23 | [SV00](http://cseweb.ucsd.edu/~varghese/PAPERS/sig2000final.pdf) |  Memory-efficient State Lookups with Fast Updates | HighSpeeding Routing | Reviewed
 [Lec10](#toc_45) | Thursday 2/25 | [MIMEH97](http://arxiv.org/pdf/cs/9810006.pdf) | The Tiny Tera: A Packet Switch Core | High Speed Routing
-[Lec11](#toc_51) | 3/1 | [ZDESZ93](http://pages.cs.wisc.edu/~pb/740/rsvp.pdf) | RSVP: A New Resource Reservation Protocol | QoS
-[Lec12](#toc_) | 3/3 | [SSZ98](http://www.cs.berkeley.edu/~istoica/papers/csfq-sig98.pdf) |  Core-Stateless Fair Queueing: Achieving Approximately Fair Allocations in High Speed Networks | QoS
+[Lec11](#toc_51) | 3/1 | [ZDESZ93](http://pages.cs.wisc.edu/~pb/740/rsvp.pdf) | RSVP: A New Resource Reservation Protocol | QoS | Reviewed
+[Lec12](#toc_) | 3/3 | [SSZ98](http://www.cs.berkeley.edu/~istoica/papers/csfq-sig98.pdf) |  Core-Stateless Fair Queueing: Achieving Approximately Fair Allocations in High Speed Networks | QoS | Reviewed
 
 # Lec2
 

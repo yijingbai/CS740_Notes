@@ -370,7 +370,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 <td><a href="http://arxiv.org/pdf/cs/9810006.pdf">MIMEH97</a></td>
 <td>The Tiny Tera: A Packet Switch Core</td>
 <td>High Speed Routing</td>
-<td></td>
+<td>Reviewed</td>
 </tr>
 <tr>
 <td><a href="#toc_51">Lec11</a></td>
@@ -378,7 +378,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 <td><a href="http://pages.cs.wisc.edu/%7Epb/740/rsvp.pdf">ZDESZ93</a></td>
 <td>RSVP: A New Resource Reservation Protocol</td>
 <td>QoS</td>
-<td></td>
+<td>Reviewed</td>
 </tr>
 <tr>
 <td><a href="#toc_">Lec12</a></td>
@@ -386,7 +386,7 @@ Orginal Style from ethanschoonover.com/solarized (c) Jeremy Hull <sourdrums@gmai
 <td><a href="http://www.cs.berkeley.edu/%7Eistoica/papers/csfq-sig98.pdf">SSZ98</a></td>
 <td>Core-Stateless Fair Queueing: Achieving Approximately Fair Allocations in High Speed Networks</td>
 <td>QoS</td>
-<td></td>
+<td>Reviewed</td>
 </tr>
 </tbody>
 </table>
@@ -778,8 +778,12 @@ Another paper, </p>
 
 <h2 id="toc_32">Notes on measurement</h2>
 
-<p>2 base methods :<br/>
-1) </p>
+<p>1) Passive. E.g. packet capture(through flow export e.g. netflow, SNMP security). Using special hardware like packet filter, also high speed packet need more precise timestamp. Senior provider turn on flow export, they want to see how their network behavies.<br/>
+2)Active Measurement: send packet or stream of packets into the network to measure response. Trace router: to get the path between the source and destiment.<br/>
+Strengths of passive measurement: 1. Not introduce extra packets. 2. Get real detail of packets 3.ability to capture the same packets to reproduce same phonoma. <br/>
+Weakness of passive measurement: 1. Hard to do in the general context 2. Need to get permission to the network 3. Need to filter the data and preprocess the flow to store the flow.<br/>
+Strengths of active measurement: 1.get what you want to get. 2.easy to do in the general context<br/>
+Weakness of active measurement: 1. The data is less, may need extra information</p>
 
 <h1 id="toc_33">Lec8</h1>
 
@@ -1196,6 +1200,75 @@ Path state is mantain via <q>Path message</q> which are transmitted from sources
 <li>QoS extension for OSPF(RFC3220)</li>
 <li>DiffService widely </li>
 </ul>
+
+<h1 id="toc_69">Lec12</h1>
+
+<h2 id="toc_70">Announcement: Midterm#1 Tomorrow (CS1325)</h2>
+
+<h2 id="toc_71">Last Time: QoS/RSVP</h2>
+
+<h2 id="toc_72">Core Stateless Fair Queueing</h2>
+
+<p>DiffServ (RFC2474)<br/>
+Protocol for provdng QoS by controlling different traffic types. The main idea is to label traffic using DSCP codes in the IP ToS fields. Based on QoS assigned to a given packet, each router will use a variety of mechanisms delver request/assigned quality. <br/>
+Mechanism include:</p>
+
+<ul>
+<li>Classify</li>
+<li>Mark</li>
+<li>Shaping - done by managing queues</li>
+<li>policing - admission control / dropping</li>
+</ul>
+
+<h2 id="toc_73">Background</h2>
+
+<p>The Definition of the Core: deep whitin provider network that have large flow of data.</p>
+
+<p>jitter - the time between the consecutive packets, if the time is stable, the jitter is low, if the time is changed, jitter is high.</p>
+
+<p>Congestion control mechanisms work better when router have the capability to allocate the bandwidth fairly.  -&gt; This can be addressed by employing methods to manage queues in routers. The cost is increased complexty(i.e. requirement to maintain per flow state) CSFQ approximates FQ at greatly reduced complexity.</p>
+
+<p>Fair bandwidth allocation: Does TCP guarantee Fairness</p>
+
+<p>Assumptions: </p>
+
+<ol>
+<li>The Fair allocation of bandwidth is important to the congestion control.</li>
+<li>The complexity of Fair Bandwidth allocation makes it prohibitive to deploy</li>
+<li>FQ says that when demand &gt; C flows are allocated min(f,r) where r =rate and f = proportional rate</li>
+</ol>
+
+<p>CSFQ approximates FQ without maintaning per flow control in the core.</p>
+
+<p>Assumes Edges/Core network config: </p>
+
+<ol>
+<li>core node is complete surrounded by the edge nodes.</li>
+<li>Core node do not maintain per flow state</li>
+<li>Edge nodes do maintain per flow stat and apply labels to packets that indicate rates.</li>
+</ol>
+
+<p>CSFQ assumes a flow X has a rate \(r_x\) it has a fair rate \(f_x\) for a given router. if \(r_x &gt; f_x\) the next packet for the flow will be dropped(on input) with same probability \(p=1-\frac{f_x}{r_x}\) To calculate \(f_x\) at a given router, use an iteravive procedure for estimating the aggregate arrival rate A and an aggreagate accept rate F Then calcuate \(f_x \approx r for A &lt;= C\) and \(fold * \frac{C}{F} for A&gt;C\) For edge nodes, use exponential average to estimate \(r_x\)(reduces sensitivity to burstiness) - see formula #3</p>
+
+<p>This method can be include weighting such that given flows get proportionally more/less bandwidth<br/>
+This paper present a theorem that bounds the amount of extra BW a flow care receive.<br/>
+Paper proceeds to evaluate CSFQ vs a variety of AQM methods e.g. FIFO, RED, FlowRED, DRR.<br/>
+Edge routers n CSFQ have a complexity \(\approx\) FRED which maintains state on a per flow basis.<br/>
+Core router have complexity \(\approx\) RED. Simulation config = single congested link, 1 UDP flow, 31TCP Flows, latency(1ms)</p>
+
+<p>Result<br/>
+1. CSFQ performs very close to DRR in terms of fair Bandwidth allocation and Throughput.<br/>
+2. Consider multiple congested links and a single TCP flow in the face of a large amount of UDP traffic. Result: For UDP source CSFQ \(\approx\) FRED and for TCP source CSFQ does much better than all other mechanisms except DRR.<br/>
+3. condiders performance of CSFQ when other schemes are used at the same time.<br/>
+4. Instances have on-off souce along wth 19 TCP sources and a single bottleneck.<br/>
+Result: CSFQ is much better than FIFO or RED but worse than FRED.</p>
+
+<p>Internet arch / TCP / Measurement / Router Design / QoS</p>
+
+<p>Two question on each area<br/>
+10 questons</p>
+
+<p>1 hour 15 mins</p>
 
 </div></body>
 

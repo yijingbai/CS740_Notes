@@ -2,14 +2,14 @@
 
 \# |Date | Bib | Title | Type | Reviewed
 ---|-----|-----|-------|------ | -------
-[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design
-[Lec2](#toc_1)|Tuesday 1/26 | [CK74](http://pages.cs.wisc.edu/~pb/740/CK74.pdf) | A protocol for packet network ntercommunication | TCP | Half-Reviewed
-[Lec3](#toc_2) | Thursday 1/28 | [JK88](http://ee.lbl.gov/papers/congavoid.pdf) |  Congestion Avoidance and Control | Congestion Control
-[Lec4](#toc_5) | Thursday 2/4 | [C](http://www.princeton.edu/~chiangm/milcom.pdf) | Layering As Optimization Decomposition:  Questions and Answers | Intenet Architecture and design
+[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design | Reviewed
+[Lec2](#toc_1)|Tuesday 1/26 | [CK74](http://pages.cs.wisc.edu/~pb/740/CK74.pdf) | A protocol for packet network ntercommunication | TCP | Reviewed
+[Lec3](#toc_2) | Thursday 1/28 | [JK88](http://ee.lbl.gov/papers/congavoid.pdf) |  Congestion Avoidance and Control | Congestion Control | Reviewed
+[Lec4](#toc_5) | Thursday 2/4 | [C](http://www.princeton.edu/~chiangm/milcom.pdf) | Layering As Optimization Decomposition:  Questions and Answers | Intenet Architecture and design | Reviewed
 [Lec5](#toc_8) | Tuesday 2/9 | [LTWW94]() | On the Self-Similar Nature of Ethernet Traffic | Measurement and Modeling
 [Lec6](#toc_22) | Thursday 2/11 | [ZDPS01]() | On the Constancy of Internet Path Properties | Measurement and Modeling
-[Lec7](#toc_28) | Tuesday 2/16 | [BOP94](ftp://ftp.cs.arizona.edu/xkernel/Papers/vegas.ps) |  TCP-Vegas: new techniques for congestion detection and avoidance | Congestion Control
-[Lec8](#toc_33) | Thursday 2/18 | [WB13](http://conferences.sigcomm.org/sigcomm/2013/papers/sigcomm/p123.pdf) | Winstein & Balakrishnan, "TCP ex Machina:  Computer-Generated Congestion Control" | Congestion Control
+[Lec7](#toc_28) | Tuesday 2/16 | [BOP94](ftp://ftp.cs.arizona.edu/xkernel/Papers/vegas.ps) |  TCP-Vegas: new techniques for congestion detection and avoidance | Congestion Control | Reviewed
+[Lec8](#toc_33) | Thursday 2/18 | [WB13](http://conferences.sigcomm.org/sigcomm/2013/papers/sigcomm/p123.pdf) | Winstein & Balakrishnan, "TCP ex Machina:  Computer-Generated Congestion Control" | Congestion Control | Reviewed
 [Lec9](#toc_41) | Tuesday 2/23 | [SV00](http://cseweb.ucsd.edu/~varghese/PAPERS/sig2000final.pdf) |  Memory-efficient State Lookups with Fast Updates | HighSpeeding Routing | Reviewed
 [Lec10](#toc_45) | Thursday 2/25 | [MIMEH97](http://arxiv.org/pdf/cs/9810006.pdf) | The Tiny Tera: A Packet Switch Core | High Speed Routing | Reviewed
 [Lec11](#toc_51) | 3/1 | [ZDESZ93](http://pages.cs.wisc.edu/~pb/740/rsvp.pdf) | RSVP: A New Resource Reservation Protocol | QoS | Reviewed

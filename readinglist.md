@@ -750,3 +750,34 @@ Two question on each area
 
 1 hour 15 mins
 
+# Lec13
+## Announcements: Graded materials returned asap md-semester project mtgs.
+## Last time: Core Stateless FQ
+## Today Improving HTTP Latancy
+
+First version = 0.9 / 1.0 
+
+publishing of HTTP protocol ------ Graph Browser
+Protocol for communicating between clents and servers top & wait protocol built on top of TCP, simple message format based set of methods(GET, PUT, PUT)
+
+clients ---  Internet  ---   servers
+(Browsers)		HTTP   	    (e.g. Apache)
+
+Request:
+
+- Uniform Resource Identifier(e.g.URL)
+- HyperText(HTML, XML, etc...)
+
+
+Response:
+
+- Header information
+	- status code
+	- optional
+
+- Data in a variety of format
+
+HTTP 1.0 packet Exchange
+
+![](images/http.png)	
+

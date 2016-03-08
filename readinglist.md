@@ -781,3 +781,33 @@ HTTP 1.0 packet Exchange
 
 ![](images/http.png)	
 
+## Inefficiencies
+### Client
+- Brower Processing
+- Caching (nfomation reuse)
+
+### Server
+- Server processing
+- Caching
+
+### NetWork
+- TCP connection management
+- Slow Start
+- Time Wait
+- Possibility of using information from prior
+- RTT's between client a server
+
+### Summary:
+- Simple set of observations about the inefficentcies between application layer and tranparent layer protocol that formed the basis for HTTP 1.1 protocol RFC(2616)
+
+## Improving HTTP
+- Persistent connections: Using a single TCP connection for multiple HTTP transactions i.e. after base HTML, use smae connection for embedded files.
+	- solveed the TCP connecton management issue and slow start
+	- Simple to implement on servers and clients -> Client must be able to determine where files end.
+- Pipeline: Files in the web can be very small, thus pipeling - putting serval files into a single packet - can further improve efficiency. This holds for clients as well as paper proposes. GETALL method.
+## Test Resule
+Based on modfied client/server located across US. Result showed dramatic reducton in latency. Between 22%-50%, with best result when smaller files were request
+
+## Implications of HTTP 1.1 on server:
+There wll be many more open TCP connections. Thus these need to be carefully manages in order to protect server performance.
+

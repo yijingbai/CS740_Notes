@@ -811,3 +811,78 @@ Based on modfied client/server located across US. Result showed dramatic reducto
 ## Implications of HTTP 1.1 on server:
 There wll be many more open TCP connections. Thus these need to be carefully manages in order to protect server performance.
 
+# Lec13
+## Announcements: Mid semester project Tue/Th meetings next week 3pm-5pm.
+## Last time: Improving HTTP latency
+## Today : summary cache
+
+
+Network Latency depends on *where* data is placed in terms of proxmity to clients caching car play a role
+
+- client caching
+	- 	reverse files that have been used in the past.
+- Server caching
+	- pin popular content in front of servers.
+	
+- Network caching
+	- Yestoday: Transparent inline-no direct addressing of the device
+	- Today: target caches - direct routing to chache devices
+
+## Summary: Caching relies on reference locality and if efficienty implemented in the web, can reduce latency. THe problem is how to get groups of caches to work together?
+Summary cache is a method for passing infomation between devices that significantly reduces network traffic. and cache CPU utilization -> assumes that t is more efficent to communicate with other caches than with servers on cache miss.
+
+## The internet cache protocol(ICP)
+defines how caches communicate multicast requests on miss
+
+Paper begins with a simulation study of the benefit of caching using traces collected at 5 different locations. -> Result are not 
+
+Next the paper examines the ICP nd caching using an emulation testbed.
+
+Environment:
+wisc proxy bench       Squid(LRU)
+client ----------------- cache            apache
+client ----------------- cache  --------  server
+client ----------------- chche  --------  server
+client ----------------- cache
+
+CPU utilization is siginificant as in ICP network traffic.
+
+Summary cache: Each cache stores a summary of URLs cached at all the other caches. On miss, check summaries first and make targeted request if possible.
+Questions:
+
+1. Representation of summaries
+2. Frequency of summary updates
+
+Summaries needs to be compact since memory requirements can grow linearly with number of caches. updates should be low frequency in order to manange network overhead. 
+
+Delaying summary updates is considered in terms of the % of new document/URL that are not reflected in a summary.
+Result of simulations indicate that a 1% to 10% threshold is sufficient.
+
+Bloom filters are proposed as mechanism for managing summaries. Very small memory footprints. Data strucutre that supports membership queries.
+Use A number of independent hash functions never returns a false negative(it says the content not in the cache, but it actually is). But false positive(it says the content is in the cache, but it actually not) is possile.
+
+Effectiveness of summaries is examined in terms of:
+
+- Hit ratio, False Positive ratio, network overhead, message size, memory usage
+
+Final part of paper examines SC_ICP implementation shows 50x reducing in network overhead vs ICP.
+
+Karger et al "Consistent Hashing + Randoms Trees" -> STOC '97
+
+Basis for Akamai -> Content Delivery Network: distributed cache infrastructure that pushes content toward clents.
+
+The question is: How does targeting work?
+
+- Akamai uses DNS to direct client requests.
+	- DNS contains informaton about the DomainName and clientIP.
+	- DNS redirection.
+	- Measure the latency based on the IP address
+
+If can not use DNS redirections, how to push the content closer to the clients?
+Two ways:
+
+- The use of Anycast. The same IP address space from multiple locations.
+- Anycast is a network addressing and routing methodology in which datagrams from a single sender are routed to the topologically nearest node in a group of potential receivers, though it may be sent to several nodes, all identified by the same destination address.
+- DNS set using anycast.
+
+

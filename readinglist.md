@@ -2,7 +2,7 @@
 
 \# |Date | Bib | Title | Type | Reviewed
 ---|-----|-----|-------|------ | -------
-[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design | Reviewed
+[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design | Reviewed[Lec4](#toc_5)
 [Lec2](#toc_1)|Tuesday 1/26 | [CK74](http://pages.cs.wisc.edu/~pb/740/CK74.pdf) | A protocol for packet network ntercommunication | TCP | Reviewed
 [Lec3](#toc_2) | Thursday 1/28 | [JK88](http://ee.lbl.gov/papers/congavoid.pdf) |  Congestion Avoidance and Control | Congestion Control | Reviewed
 [Lec4](#toc_5) | Thursday 2/4 | [C](http://www.princeton.edu/~chiangm/milcom.pdf) | Layering As Optimization Decomposition:  Questions and Answers | Intenet Architecture and design | Reviewed
@@ -885,4 +885,81 @@ Two ways:
 - Anycast is a network addressing and routing methodology in which datagrams from a single sender are routed to the topologically nearest node in a group of potential receivers, though it may be sent to several nodes, all identified by the same destination address.
 - DNS set using anycast.
 
+
+# Lec13 
+## Announcement: 
+Project reviews this week
+midterm retuned after break
+## Laste time: Summary Cache
+## Today SURGE
+## Background: williger et al => Self-sim in Ethernet traffc
+
+Paxson + Floyd => SelfSim persists in the Wide Area
+Crovella & Bestravro's => What about the web? => SS persist in the web to show that the cause for SS is the heavy-tailed file sisze that exist on webservers 
+
+##  
+Generating Representative web request describes a method and tool for web workload generation that can be used to test web servers in a representative fashion.
+
+## Method for web/workload generation
+
+1. Empirical - collect and replay traces
+	1. Benefit
+		* It is **REPRESENTATIVE**
+		* The benifit to replay flow?
+	2. DrawBack
+		* Inflexity
+		* BlackBox
+2. Analytic - Create a model that captures key characteristics of workloads->This becames the basis for generation.
+	1. Benefit
+		* Flexibility
+		* whitebox
+	2. DrawBack
+		* Representative
+
+Analytic Web|Workload generation: 
+
+1. what are key characteristics?
+2. how can they be expressed in a model?
+
+## Starting point: recognizing ON/OFF nature of browsing
+On: meansing file being transfered.
+OFF: Looking at what was rendered.
+Person ==> |ON|OFF|  ||||  | 
+                     |--| => Web object transfer
+			   Time --->   -> Active OFF time
+			   |---------------| => closed loop
+
+User equivalent => how can this behavior be modeled and simulated?
+
+The Approach for modeling UE(User Equivlent) was based on deriving distributions from empirical measurement.   
+
+1. File sizes on servers
+	* Impact: Access File/Memory on the system
+2. Request sizes by UEs
+	* Impact: Network
+3. Popularity of files
+	* Impact1: File/Memory of the System
+	* Impact2: Caches
+4. Temporal locality
+5. Embedded Servers
+6. Active/Inactive OFF times
+
+Paper describes statistical distributions that are used for each of the model components.
+
+Popularity is define as Zipf model. => # of references for a file inversely proportional to its rank.
+
+In order to create a sequence of requests that satisfies all of the required properties, we need to solve "The matching problem"
+
+SURGE Architecture
+  			         __Clients-----
+ON/OFF Treads ---|__Clients----| Net -- Web Server
+
+Benchmark for webservers = Spec Web which made requests at constant rate for 5 dfferent files
+Compare surge vs SpecWeb by equation # pkts/sec that are sent by sever.
+
+## Result
+
+1. CPU load for surge clients was much higher than for SpecWeb.
+2. Spec shows evidence for SS at low loads but the burstinese goes a way at higher loads.
+3. Surge was bursty at all scales
 

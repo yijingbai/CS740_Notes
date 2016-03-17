@@ -963,3 +963,67 @@ Compare surge vs SpecWeb by equation # pkts/sec that are sent by sever.
 2. Spec shows evidence for SS at low loads but the burstinese goes a way at higher loads.
 3. Surge was bursty at all scales
 
+# Lec14
+## Announcement: 
+- Midterm project review
+- No class Next week
+- comScore Summber Internship
+
+## LastTime:Surge
+## Today: Comparing wireless TCP
+How wireless communication be useful. 
+Trade off- 
+Higher power: ability to transfer further distances
+Lower power: ability to transfer shorter distances
+
+Another big issue: at the end of day, we have limited communication vector. practically, Manages transmission spectrum. Lawyer built little jammer(outputs a lot of noise). How regulation take place. Most reserved. Transmission need regulation. Get a piece of spectrium. 
+
+Different kind of devices: Cell, Wifi, Microwave communication.
+
+It is a great paper of one type of paper: comparsion paper. The other types of paper are Original contribution and revisiting paper.
+
+## Motivation
+Wireless medium(air) has significantly different characterics than wire-line. That is much higher bit error rates due to noise. TCP recognizes packets that are dropped due to bit errors as congestive loss and backs off leading to reduced performance.
+
+Objective: Compare a number of methods to improve performance of TCP in lossy but uncongested links.
+
+Performance metrcs: Throughput (bits/bytes/packets/secs) Good put - Actual transfer size -> Totoal bytes transferred.
+Why care good put? -> If good put goes down, it means waste bandwidth.
+
+Study considers 3 classes of protocols. in a simple wireless testbed.
+  	       Lan@10Mbps     2mbps waveLAN
+TCP Source --------Base Stationq--------------Mobile Client
+			  WAN 16hops
+			  
+Two approaches for improving performance in wireless: 
+
+1. Hide the link layer from TCP
+2. Inform TCP that Some loss is non-congestive.
+
+Protocols Considered
+
+1. Link layer - hide non-congestion loss by using local retransmission or via FEC.
+2. Objective: Compare a number of methods to improve performance of TCP inloosy but uncongested links.
+3. Makes link layer appear to be higher quality by Hamming coding etc.
+4. Four LinkLayer schemes evaluated:
+	1. LL: Base Station ensure reliability via Maintain buffer of packets and timer.
+	2. LL-Smart: (SACK: Selective ACKS | Smart-Selective: Smart version of SACK) Uses selective ACKs at link layer to enhace recovery.
+	3. LL-TCP-Aware: Suppress duplicate ACKs at base station to avoid unnecessary fast retransmit.
+	4. LL-SMART_TCP_Aware: 
+5. Split Connect: Instead of have end-to-end connection, separate connections between sender-base station, base-station-client.
+	1. Split - see above
+	2. Split-SMART: Use SMART on wireless side.
+6. End-to-End: Five different end-to-end protocol compared:
+	1. TCP Reno
+	2. TCP New Reno(resend another packet on multiple losses).
+	3. Adding SMART-TCP
+	4. ELN-TCP explisive lost notification.
+	5. ELN-RXMT: ELN
+
+## Experiments
+
+- Based on modifications to TCP/IP Stacks
+- Loss is simulated(By changing TCP checksums) ~ 2% pkts loss
+- 8MBWAN expts experience no congestive loss - expls run at night
+- 
+

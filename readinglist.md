@@ -2,7 +2,7 @@
 
 \# |Date | Bib | Title | Type | Reviewed
 ---|-----|-----|-------|------ | -------
-[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design | Reviewed[Lec4](#toc_5)
+[Lec1](#toc_1)|Tuesday 1/26 | [SRC84](http://pages.cs.wisc.edu/~pb/740/end-to-end.pdf) | End-To-End Arguments in System Design | Internet Architecture adn Design | Reviewed
 [Lec2](#toc_1)|Tuesday 1/26 | [CK74](http://pages.cs.wisc.edu/~pb/740/CK74.pdf) | A protocol for packet network ntercommunication | TCP | Reviewed
 [Lec3](#toc_2) | Thursday 1/28 | [JK88](http://ee.lbl.gov/papers/congavoid.pdf) |  Congestion Avoidance and Control | Congestion Control | Reviewed
 [Lec4](#toc_5) | Thursday 2/4 | [C](http://www.princeton.edu/~chiangm/milcom.pdf) | Layering As Optimization Decomposition:  Questions and Answers | Intenet Architecture and design | Reviewed
@@ -14,6 +14,9 @@
 [Lec10](#toc_45) | Thursday 2/25 | [MIMEH97](http://arxiv.org/pdf/cs/9810006.pdf) | The Tiny Tera: A Packet Switch Core | High Speed Routing | Reviewed
 [Lec11](#toc_51) | 3/1 | [ZDESZ93](http://pages.cs.wisc.edu/~pb/740/rsvp.pdf) | RSVP: A New Resource Reservation Protocol | QoS | Reviewed
 [Lec12](#toc_) | 3/3 | [SSZ98](http://www.cs.berkeley.edu/~istoica/papers/csfq-sig98.pdf) |  Core-Stateless Fair Queueing: Achieving Approximately Fair Allocations in High Speed Networks | QoS | Reviewed
+[Lec13]() | 3/8 | [PM96](http://research.microsoft.com/en-us/um/people/padmanab/papers/www-fall94.pdf) |  Improving HTTP Latency | Web | Reviewing
+[Lec14]() | 3/10 | [FCAB98]() |  Summary Cache: A Scalable Wide-Area Cache Sharing Protocol | Web | 
+[Lec15]() | 3/15 | [BC]() | Generating Representative Web Workloads for Network and Server Performance Evaluation | Web |
 
 # Lec2
 
@@ -805,7 +808,7 @@ HTTP 1.0 packet Exchange
 	- solveed the TCP connecton management issue and slow start
 	- Simple to implement on servers and clients -> Client must be able to determine where files end.
 - Pipeline: Files in the web can be very small, thus pipeling - putting serval files into a single packet - can further improve efficiency. This holds for clients as well as paper proposes. GETALL method.
-## Test Resule
+## Test Result
 Based on modfied client/server located across US. Result showed dramatic reducton in latency. Between 22%-50%, with best result when smaller files were request
 
 ## Implications of HTTP 1.1 on server:

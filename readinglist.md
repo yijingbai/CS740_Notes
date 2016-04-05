@@ -1027,3 +1027,81 @@ Protocols Considered
 - 8MBWAN expts experience no congestive loss - expls run at night
 - 
 
+
+# Lec 15
+## Last Time: Transparent & wireless
+## Sensor Network
+Many applications could take the sensor to measure the physical.
+If we can connect all the sensors to the network, then we can save a lot of time.
+
+## Ad hoc network
+Standard wireless network typically use some kind of base station to facilitate communication. between wireless devices and between a wireless deice and wireless services.
+
+Current Base station approach problem:
+
+- Costs
+- limited range
+- Good fault tolerance
+- Good Performance
+
+Ad hoc networks assume no fixed infrastructure(i.e. No base stations) and the objective is high performance, reliable inter-host communication.
+Hosts play dual roles: communication applications and perform routing.
+	
+- limited power
+- limited range
+
+Summary: Paper compares 4 ad hoc routing protocols via simulation result are mixed indicating that mobility rates determine which protocol works best.
+
+CMU extension to NS2
+physical layer extension:
+	
+- radio transmission
+	- Radio waves atteruate as they propagate at a rate propertional to distance "r" (1/r^2, 1/r^4)
+	- Frequency 1-2GHz (Today: 5GHz)
+
+Nodes have a position and speed
+-> Objective is to determine propagation delay and signal strength as nodes move
+
+Nodes have one or more interfaces but all are of the same type. On Tx, a "channel object" calculates propagation delay and schedule a reception event -> on reception, packet power levels are compare to thresholds to determine if the packet was successfully received.
+
+Medium Access Control:
+provides access to one node at a time and includes reliability based on 802.11 when MAC is signaled that a packet is received, it checks for packts errors and and if error-free, pass packet to layer3.
+
+Others: Simple ARP
+
+- performs IP to MAC address translation
+- Pkt buffering
+- broadcast jitter
+- routing is given priority
+
+Criticism for Physical layer
+
+1. should parameterized
+2. why there is no noisy source here
+3. Mobility: How they define the node move? should have more mobility for the move model and adding more randomness. Think issues in critical way. 
+
+
+Ad Hoc Routing Protocol
+distance vector: communicatoin with neighbor
+
+1. Desnatoin Sequenced Disntance Vector(DSDV)
+	- Distance vector protocol without loops this is done by periodic broadcast of routing information.
+2. Temporally Orierented Routing ALgorithm(TORA)
+	- a scalable algorithm that creates multiple routes to destination,coverges quickly, localiizes reponses BUT  route optimality is not assured. Algorithm establishes a DAG routed at destination. There is a process for establishing heights on the DAG which are used to select next hop.
+3. Dynamic Source Routing(DSR)
+	- not a hop-by-hop protocol, rather, each packet contains all routing information which has the benefit of relieving intermediate nodes of makeing forwarding decisions.
+
+**4. Ad Hoc On-demand DV(AODV)**
+	Combine DSR, DSDV.
+	Excepts:
+	
+- 50 nodes moving in 500M * 300M square each buffers up to 50 pkts
+- 210 movement scenarios
+- Data transmitted by different number of sources active at the same time.
+	
+
+Metrics:
+1. pkt delivery ratio
+2. routing overhead
+3. path optimality
+

@@ -1108,3 +1108,171 @@ Metrics:
 2. routing overhead
 3. path optimality
 
+
+
+# Lec x
+## Anncouncements: Office hours today: 2:30-3:30
+## LastTime: RON 
+## Today: Chord
+## Review
+Deply RON, 
+Major limitation of RON, the extenson abaility is bad, can not afford a lot of nodes.
+
+## Standard application architecture
+1. Client Server architecture: Usability(asymmetry)
+2. Peer-2-Peer(Symmetry in objective)
+
+
+## canonical problem in P2P
+Challenge: dynamic membership
+
+Discusses the dea of what is referred as a key/value store i.e. provide the system with a key and the system wll return the address for where the data associated with that key is stored. Key Value Store: Given a Key, we want to map that to where ever the data is stored.
+
+## Approach-> Consistent Hashing
+Capabilities: For an infrastructure with N nodes, each node maintains information about logN other nodes and  send LogN messages for lookups, and update ~Log^2N message
+
+## Chord Features
+Keys = Name of document/Song/Movie
+Objective: Create a lookup system for p2p that:
+1. Load Balances(distributes key evenly)
+2. Decentralized
+3. Scalable
+4. Flexible
+5. Robust
+
+Choard is implemented as a simple library function that returns an IP address(of the node that has the desired content) for a given key.
+
+## Chord Protocol
+Core: Consistent Hashing
+Build on top of consistent hashing which specifies how to find key location distribute and ensures that if Nth node join/leaves only 1/N keys need to be moved. and NO global knowledge is required
+
+Consistent hashing use a base hash function SHA-A to Hash node IP address and keys using a simple circuler approach. See example in Figure 2 and explanation.
+
+Also because of Hash Function we organze the space to a circle.
+
+Node IP address and keys using a simple circular approach. Consider a circle with 2^m nodes where m= hash lenth. key K is assigned to the first node on the ring whose hash ID is equal to or follows(i.e. the sucessor) k.
+
+This enable data to be found efficeiently and for nodes to join and leave with minimal disruption. Specifically, when a node n joins, the keys will previous assigned to n's successor now assign to n and the reverse happens when n leaves.
+
+=> What's beening done: The man extension of Chord is prior work on consistent hashing is to enable scalability through the addition of a small amount of routing informaton which is also stored on nodes. THe baseline behavor is that only successor are known. This means that queries could take up to N steps to return.
+
+Fnger tables contain routing information about M other nodes which enables queries to resolve in O(LogN) -> see sec4.3
+
+When a node joins, the ability to locate all keys must be perserved. This implies 2 invariants:
+1. Successor must be preserved
+2. For each k, "success(k)" is reponsible for resolving k and finger table must be correct.
+
+
+Let's say we know about chord, one of the means 
+
+# Lec X+1 
+## Announcement: Talk  sign up this week
+## Last: Chord
+Peer to Peer network, the application has flexiablity.
+Benefit: Distributed information sharing.
+Quesiton: How you actually find the content in the system
+Idea: Consistent hashing, deployed in the infrastructure.
+
+## Today: How to 0wn the Internet
+~ mid 80's R morris from NSA => Raised concerns about Internet Security
+
+Robert Morris jr
+Wrote SW in '88 =>
+
+1. search for 3 well know vulnerabilities
+2. self propagation, i.e. look for other remote system that it could nstall itself on
+3. when released in late '88 had a huge major inmpact on the internet
+
+88-01-Quiet period
+S Forrest => Coined term "computer virus" and made analogy between computer vulnerability/compromise and spread of decrease
+
+'01-'04->Worms
+'04- Bots (Nets)
+'10- Diversification in malware
+'10- Emergence nation-state activity
+
+Model for considering network security Adversaries vs Defenders. 
+Adversaries: Something abnormal.
+
+- Threats: Worms, Bot, DDos
+
+Defender: Desire to prevent attacker from achieving their goal
+
+- Must create a set of defensive mechanisms
+
+
+Threats lead to exploits that take advantage of vulnerabilities on hosts or in the networks.
+Typical notions of IT security
+
+1. Defense in depth i.e. deply/manage security throughout an infrastructure
+2. Deployment of actual security systems
+3. implememnt comprehensive security policies
+4. Education
+
+Characterizing three kind of worms
+
+1. CodeRed I 7/01 expliot IIS
+	- 2 versions, the second fixed a propagation bug - enable more efficient spread
+	- offers a simple model for propagation(Why we care about propagaton? - we care about network)
+2. CodeRed I 8/01 exploited same IIS vulnerbility but install a root backdoor.
+	- Propagatoin mechianism was completely dfferent.
+3. Nimda
+	- 9/01, distict from code red, included a variety of exploits. The IIS, Email, shared directory. look the backdoor left by the code red 2.
+	- rapid infection rate.
+
+Series of new propgation methods are considered:
+
+1. Hit list scanning. Idea is to seed the initiation of scans with a list of system that may be vulnerable.
+2. permutation scans: Random scan could have multiple duplicate scan. Create a random permuaton of IPv4 space begn scans and an infected host is encountered, a new starting point in the permuation.
+3. hit list + permutation(Warhol worm) Speed and capability is demonstrated.
+4. Topological Scans: Use information in affected hosts to select new targets.
+5. Flash Scan: 
+
+
+# Lec X+2
+## Announcement: Midterm #2 in 2weeks, Guest Lecture next Tues
+## Last time: Owning the Internet
+
+## Background
+Standard tool for scanning: NMAP
+### Stealth Worms
+Not focused on speed but rather compromize without detection.
+Means for addressing threats: Cyber CDC: US CERT 
+
+## Today: Pay-per-install
+### Measuring PPI
+Commoditization of malware distribution it's challenging to write malicious code that does "everything", that is the code can:
+
+1. Find vulnerable host
+2. It can compromise hosts
+3. It can communicate with bot master
+4. It can execute data gathering or Dos or other functions to make $
+
+PPI networks implfy malware dstribution and executon. PPI offers a service that enables malware to be more specialized and easily deployed to vulnerable hosts.
+
+Paper reports study of serveral PPI networks.
+PPI includes 3 parties:
+
+1. Clients who want to install malware
+2. Providers who receive payment maintain PPI infrastructure
+3. Affiliates who extended the reach of the PPI network and receive partial payment.
+
+Key technical element developed by providers = downloader
+Downloader accepts and runs code that B provided by clients
+Antivirus code or compromised hosts can cause problems for PPI providers.
+
+Packers can be used to change  the binary representation of executation.
+
+Packets are used periodically to enable malware to remain viable.
+
+Infiltration: Though information gather on chat groups and other forums, authoers find 4 PPI nets.
+
+To infilterate PPI nets that were identified, a program(milker) is developed that mimics key aspects of the downloader programs. This enables client binaries to be downloaded and examined by the authors.
+
+The result of the paper focused on examination of binaries that are collected.
+
+
+
+
+
+

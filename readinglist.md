@@ -1271,8 +1271,151 @@ To infilterate PPI nets that were identified, a program(milker) is developed tha
 
 The result of the paper focused on examination of binaries that are collected.
 
+# Lec X+3
+## Annoucement
+1. midterm #2 next Tudesday.
+2. In-class talks next thursday.
+
+## Ads fraud
+## Overview Background and challenges
+### Online ads overview
+Characterized by complexity, diversity and dynamics
+Clients: people who use browsers and/or apps to access content made available by publishers
+Sellers: publshers who offer content to clients and allocate space to accommodate ads
+Buyers: Advertsers who market producs to clients - They pay the bills(PPC, CPM, etc.)
+Intermediares: offer services to all
+- They take a cut of ads served
+
+### The threat landsape
+Primary motivation of fraudsters in the Internet = $$
+
+- $50B in US digital ad spend in '14
+- Fraud rates range widely
+
+Fraudster's advantage
+
+- Anonymity, vulnerabilities, complexity, scale
+- Human in the Loop
+
+Key requirement - a way to put $$ in the Bank
+
+- Ad exchange
+
+Attack Vectors:
+Invalid traffic falls into four general categroies
+
+- Traffc generators - human & automated
+- Unwanted ads - plugins & injectors
+- Invisible ads - including popunders
+- Misrepresented placements - domain laundering
 
 
+Traffic generation
+
+- Direct host systems access a target page
+- Valid traffic generation is expensive
+	- Adwords, outbran, bngAds, Facebook ads, etc.
+- Type purchase web traffic in Google
+- Many offersings
+
+Honeypot webstes
+
+- Websites developed to be targets for traffic generation
+- Look and feel of a real ste
+- Instrumentation
+- Gather as much data per access
+
+Pulgins and injectors
+Software that generate ads that are not part of publisher placement
+
+What about bots Bots have been around for a long time
+
+- Originally developed in 90's to manage host
+- Compromised hosts under the control of remote entity
+
+Bots are characterzed by key capabilities
+- Impresson and injection
+
+Example: Athena botnet
+- Various ad aviewing capabilities
+
+Clouds are better.
+
+Unseen ads via PPV nets
+
+- Traffic generation(TG) objective: look like a real user
+- Some TG service offer a javascript tag when included on a ste pays attractive CPM.
+- "will not block any of your site content and does not lead to actions where users might be led to leave your site"
+- Tag will display camouflged 3rd party websites
+
+PPV network: groups of sites taht run tags from a single TG service.
+
+PPV net scope and impact
+Many PPV sites publish their volume.
+- Average of 17.16 M unique vistors and 6.29 B page view per provider per day.
 
 
+Domain laundering
+Doman  laundering is the act of sending false information to an ad provide about an ad placement
+
+Key issue: low quality ad: $0.01 CPM
+
+Investigating domain laundering
+- Identifying domain laundering is challenging
+	- Telemetry from clients may not be sufficient
+	- Domains may be obscured for legitimate reasons
+- We use all of comScore's data seet to generate a holstic view
+	- Ad tags census tags and client panel
+	- Panel enables reconstruction
+
+Case study2: Bimage
+Found by evaluating domains with questionable content + high ad count
+- We compare ad tags vs census tag assets
+- Early evidence of this in 14 AdAge title
+
+
+Addressing the threat
+
+- Basic issues are similar to IT security
+- Need to understand threats
+- Defense-in-depth
+	- Multiple perimeters
+		- Detection vs. mtigation
+	- Tools for decision support and remediation
+- Core components for addressing ad fraud
+	- Diverse measurement capability
+	- Filters to identify/mitigate
+
+- start with telemetry
+	- objective: breadth and depth
+	- Any specific measurement method has limits
+- chanllenges: scale, diversity and dynamics
+- Honeypots: for traffic
+
+From telemetry to filters
+- Objective: Accurate, efficient identification of threat
+- False positives are worse than flase negtive
+- Approach: Mine telemetry for signals
+	- Hypothesis-based, iterative
+
+Direct filters
+based on signal that dentify a population of impression or cookies as fraudulent.
+
+Industry-realted IVT efforts
+
+- Traffic of Good Intent(TOGI) task force estabilished in Spring'13 by the IAB
+
+Mission: identify
+
+
+To infinity and beyond
+Summary:
+
+- Complexities of ad ecosystem offer many opportunities to fraudsters
+- Simple fraud is easy to dtect and remove
+- Addressing complex threats requires significant data assets
+
+Futurejm54 m,'
+
+	
 
